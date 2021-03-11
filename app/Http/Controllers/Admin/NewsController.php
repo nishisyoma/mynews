@@ -12,4 +12,10 @@ class NewsController extends Controller
     {
         return view('admin.news.create');
     }
+    
+    //laravel-13で追記
+    public function create(Request $request)
+    {
+        return redirect('admin/news/create');
+    }
 }

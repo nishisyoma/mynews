@@ -17,26 +17,19 @@ Route::get('/', function () {
 
 //Route::get('XXX', 'AAAController＠bbb');//
 
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create','Admin\NewsController@add');
-    //
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    //laravel-12課題
     Route::get('profile/create', 'Admin\ProfileController@add');
     Route::get('profile/edit', 'Admin\ProfileController@edit');
+    
+    //laravel-13で追記
+    Route::get('news/create', 'Admin\NewsController@add');
+    Route::post('news/create', 'Admin\NewsController@create');
+    //laravel-13の課題　3と6で追加
+    Route::post('profile/create', 'Admin\ProfileController@create');
+    Route::post('profile/edit', 'Admin\ProfileController@update');
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
-    Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
-    Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
