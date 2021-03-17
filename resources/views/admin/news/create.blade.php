@@ -5,7 +5,7 @@
     @section('title','ニュースの新規作成')
     
     {{-- admin.bland.phpの@yield('content')に以下のタグを埋め込む --}}
-    //laravel-13で編集
+    //　laravel-13で編集
 @section('content')
     <div class="container">
         <div class="row">

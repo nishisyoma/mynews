@@ -19,17 +19,18 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-    //laravel-12課題
+    // laravel-12課題
     Route::get('profile/create', 'Admin\ProfileController@add');
     Route::get('profile/edit', 'Admin\ProfileController@edit');
     
-    //laravel-13で追記
+    // laravel-13で追記
     Route::get('news/create', 'Admin\NewsController@add');
     Route::post('news/create', 'Admin\NewsController@create');
-    //laravel-13の課題　3と6で追加
+    // laravel-13の課題　3と6で追加
     Route::post('profile/create', 'Admin\ProfileController@create');
     Route::post('profile/edit', 'Admin\ProfileController@update');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
