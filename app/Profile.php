@@ -11,7 +11,7 @@ class Profile extends Model
     // 名前・性別・趣味・自己紹介を追加
     public static $rules = array(
         'name' => 'required',
-        'genbar' => 'required',
+        'gender' => 'required',
         'hobby' => 'required',
         'introduction' => 'required',
     );
