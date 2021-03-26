@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 // laravel-14追記 News Modelが扱えるようになる
 use App\News;
+// laravel-17追記
+use App\History;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -92,6 +95,14 @@ class NewsController extends Controller
         
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
+        
+        // 該当するデータを上書きして保存する
+        $profile->fill($profile_form)->save();
+        // laravel-17追記
+        $history = new histories;
+        $history->news_id = $news_id;
+        $history->edited_at = Carbon::new();
+        $history->save();
         
         return redirect('admin/news');
     }
