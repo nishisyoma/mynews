@@ -8,7 +8,7 @@ class News extends Model
 {
     protected $guarded = array('id');
     //　laravel-14追記
-    public static $lures = array(
+    public static $rules = array(
         'title' => 'required',
         'body' => 'required',
     );
@@ -17,6 +17,6 @@ class News extends Model
     // News Modelに関連付けを行う
     public function histories()
     {
-        return $this->hasMany('app\History');
+        return $this->hasMany('App\History');
     }
 }

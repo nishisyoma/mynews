@@ -28,7 +28,7 @@ class NewsController extends Controller
         $news = new News;
         $form = $request->all();
         // デバックコード追加
-        \Debugbar::info(確認したい変数など);
+        // Debugbar::info(確認したい変数など);
         // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
         if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image');
@@ -96,12 +96,10 @@ class NewsController extends Controller
         // 該当するデータを上書きして保存する
         $news->fill($news_form)->save();
         
-        // 該当するデータを上書きして保存する
-        $profile->fill($profile_form)->save();
         // laravel-17追記
-        $history = new histories;
-        $history->news_id = $news_id;
-        $history->edited_at = Carbon::new();
+        $history = new History;
+        $history->news_id = $news->id;
+        $history->edited_at = Carbon::now();
         $history->save();
         
         return redirect('admin/news');
