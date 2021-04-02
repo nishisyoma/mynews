@@ -10,6 +10,8 @@ use App\News;
 // laravel-17追記
 use App\History;
 use Carbon\Carbon;
+// 画像の保存先をS3に変更
+use Storage; 
 
 class NewsController extends Controller
 {
@@ -31,8 +33,10 @@ class NewsController extends Controller
         // Debugbar::info(確認したい変数など);
         // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
-            $news->image_path = basename($path);
+            $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+            $news->image_path = Storage::disk('s3')->url($path);
+            //$path = $request->file('image')->store('public/image');
+            //$news->image_path = basename($path);
         } else {
             $news->image_path = null;
         }
@@ -82,6 +86,7 @@ class NewsController extends Controller
         $news_form = $request->all();
         if ($request->remove == 'true') {
             $news_form['image_path'] = null;
+            
         }  elseif ($request->file('image')) {
             $path = $request->file('image')->store('public/image');
             $news_form['image_path'] = basename($path);
