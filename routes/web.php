@@ -41,3 +41,10 @@ Route::get('/', 'NewsController@index');
 Route::get('/profile', 'ProfileController@index');
 
 Route::get('/home', 'HomeController@index');
+
+// 作成物
+Route::get('/newhome', 'MainController@create');
+
+Route::group(['prefix' => 'admin', "middleware"=>"auth"], function() {
+    Route::get('game/create', 'Admin\GameController@create');
+});
