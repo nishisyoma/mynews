@@ -45,6 +45,7 @@ Route::get('/home', 'HomeController@index');
 // 作成物
 Route::get('/newhome', 'MainController@create');
 
-Route::group(['prefix' => 'admin', "middleware"=>"auth"], function() {
-    Route::get('game/create', 'Admin\GameController@create');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('game/create', 'Admin\GameController@add');
+    Route::post('game/create', 'Admin\GameController@create');
 });
