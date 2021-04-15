@@ -146,8 +146,13 @@ return [
     */
     // laravel-14追記
     'attributes' => [
-        'title' => 'タイトル',
-        'body' => '本文',
+        'name' => '名前',
+        'game machine' => 'ゲーム機',
+        'nunber of people' => '募集人数',
+        'matching' => 'マッチ',
+        'play style' => 'プレイスタイル',
+        // 'title' => 'タイトル',
+        // 'body' => '本文',
         ],
 
 ];
