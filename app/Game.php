@@ -9,10 +9,10 @@ class Game extends Model
     protected $guarded = array('id');
     // Validationの設定
     public static $rules = array(
-        'name' => 'プレイヤー名',
-        'game machine' => 'ゲーム機',
-        'nunber of people' => '募集人数',
-        'matching' => 'マッチ',
-        'play style' => 'プレイスタイル',
+        'name' => 'required',
+        // 'game machine' => 'required',
+        // 'nunber of people' => 'required',
+        // 'matching' => 'required',
+        // 'play style' => 'required',
         );
 }
