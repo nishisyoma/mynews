@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Game;
-use Carbon\Carbon;
 
 class GameController extends Controller
 {
@@ -23,6 +22,7 @@ class GameController extends Controller
         $game = new Game;
         $form = $request->all();
         // フォームから送信されてきた_tokenを削除する
+        
         unset($form['_token']);
         //データベースに保存する
         $game->fill($form);
@@ -31,11 +31,19 @@ class GameController extends Controller
         return redirect('admin/game/create');
     }
 
-    public function edit()
+    public function  index(Request $request)
     {
-        return view('admin.game.edit');
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Games::where('name', $cond_name)->get();
+        } else {
+          // それ以外はすべてのニュースを取得する
+          $posts = Game::all();
+        return view('admin.game.index', ['posts' => $posts, 'cond_name' => $cond_name]);
+        }
     }
-
+        
     public function update()
     {
         return redirect('admin/game/edit');

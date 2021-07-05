@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-// laravel-14追記 News Modelが扱えるようになる
+//  News Modelが扱えるようになる
 use App\News;
-// laravel-17追記
 use App\History;
 use Carbon\Carbon;
 // 画像の保存先をS3に変更
@@ -15,16 +14,13 @@ use Storage;
 
 class NewsController extends Controller
 {
-    //
     public function add()
     {
         return view('admin.news.create');
     }
     
-    // laravel-13で追記
     public function create(Request $request)
     {
-        // laravel-14追記
         $this->validate($request, News::$rules);
         
         $news = new News;
@@ -59,13 +55,12 @@ class NewsController extends Controller
             // 検索されたら検索結果を取得する
             $post = News::where('title', $cond_title)->get();
         }   else {
-            // それ以外はすべてのニュースを取得する
+            // それ以外はすべての投稿を取得する
             $posts = News::all();
         }
         return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
     
-    // laravel-16で追記
     public function edit(Request $request)
     {
         // News Modelからデータを取得する

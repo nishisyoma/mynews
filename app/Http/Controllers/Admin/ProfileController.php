@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
-//laravel-17課題
 use App\ProfileHistory;
 use Carbon\Carbon;
 //

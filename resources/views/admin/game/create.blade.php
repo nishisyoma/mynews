@@ -24,7 +24,7 @@
                     {{-- セレクトボックスコード追記 ゲーム機選択・人数・(ランクかカジュアル)・プレイスタイル --}}
                     <form action="cgi-bin/formmail.cgi" method="post">
                         <p>ゲーム機:
-                        <select name="game machine">
+                        <select name='game machine'>
                             <option value="0">ゲーム機選択</option>
                             <option value="PC">PC</option>
                             <option value="PS">PS</option>
@@ -32,19 +32,19 @@
                             <option value="Switch">Switch</option>
                         </select></p><br>
                         <p>募集人数:
-                        <select name="nunber of people">
+                        <select name='nunber of people'>
                             <option value="0">募集人数選択</option>
                             <option value="1">1人</option>
                             <option value="2">2人</option>
                         </select></p><br>
                         <p>マッチ:
-                            <select name="matching">
+                            <select name='matching'>
                             <option value="0">マッチを選択</option>
                             <option value="Rank">ランク</option>
                             <option value="casual">カジュアル</option>
                         </select></p><br>
                         <p>プレイスタイル:
-                            <select name="play style">
+                            <select name='play style'>
                             <option value="0">プレイスタイルを選択</option>
                             <option value="Let's have fun">誰でも歓迎します。</option>
                             <option value="Let's have fun">楽しく遊びましょう。</option>

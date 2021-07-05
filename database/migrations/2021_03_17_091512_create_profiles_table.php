@@ -11,7 +11,6 @@ class CreateProfilesTable extends Migration
      *
      * @return void
      */
-        // laravel-14 課題
     public function up()
     {
         Schema::create('profiles', function (Blueprint $table) {

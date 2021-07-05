@@ -12,8 +12,6 @@ class News extends Model
         'title' => 'required',
         'body' => 'required',
     );
-    
-    // laaravel-17
     // News Modelに関連付けを行う
     public function histories()
     {
